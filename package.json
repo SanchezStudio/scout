@@ -13,11 +13,11 @@
     "css:dev": "npm-run-all sassy",
     "css:prod": "npm-run-all sassy postcss",
 
-    "build": "npm-run-all js:prod css:prod",
-
     "watch": "npm-run-all --parallel watch:*",
-    "watch:js": "onchange \"./js\" -- npm run build:js-dev",
-    "watch:scss": "onchange \"./scss\" -- npm run build:css"
+    "watch:js": "onchange \"./js\" -- npm run js:dev",
+    "watch:scss": "onchange \"./scss\" -- npm run css:dev",
+
+    "build": "npm-run-all js:prod css:prod"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.1",
