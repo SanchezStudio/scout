@@ -1,6 +1,14 @@
 {
+  "name": "squarespace-starter",
+  "version": "0.1.0",
+  "description": "Squarespace Starter",
+  "author": "Caleb Sanchez",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:calebmichaelsanchez/squarespace-starter.git"
+  },
   "config": {
-    "css_file": "./sqs_template/styles/screen.css",
+    "css_file": "./template/styles/screen.css",
     "scss_file": "./scss/screen.scss"
   },
   "scripts": {
@@ -13,7 +21,13 @@
     "css:dev": "npm-run-all sassy",
     "css:prod": "npm-run-all sassy postcss",
 
-    "watch": "npm-run-all --parallel watch:*",
+    "sqs:build": "squarespace assemble -d './template' && webpack --config './template/webpack.config.js' --display-modules",
+    "sqs:watch": "squarespace assemble -d './template' && webpack --config './template/webpack.config.js' --watch --hide-modules",
+    "sqs:server": "squarespace runserver --auth -T -d './template'",
+    "sqs:start": "squarespace setup -d './template' && (npm run sqs:watch & npm run sqs:server)",
+    "sqs:deploy": "squarespace setup -d './template' && squarespace deploy -d './template'",
+
+    "watch": "npm-run-all --parallel watch:js watch:scss sqs:start",
     "watch:js": "onchange \"./js\" -- npm run js:dev",
     "watch:scss": "onchange \"./scss\" -- npm run css:dev",
 
