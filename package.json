@@ -10,7 +10,7 @@
   "config": {
     "css_file": "./template/styles/screen.css",
     "scss_file": "./scss/screen.scss",
-    "sqs_url": "put url here"
+    "sqs_url": "https://caleb-sanchez-a2rc.squarespace.com"
   },
   "scripts": {
     "js:dev": "webpack -d",

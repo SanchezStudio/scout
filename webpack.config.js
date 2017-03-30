@@ -10,7 +10,7 @@ module.exports = {
   entry: APP_PATH,
   output: {
     path: "./template/scripts/",
-    filename: "site.js"
+    filename: "app.js"
   },
   module: {
     loaders: [
