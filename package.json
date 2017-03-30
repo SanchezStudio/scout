@@ -9,7 +9,9 @@
   },
   "config": {
     "css_file": "./template/styles/screen.css",
-    "scss_file": "./scss/screen.scss"
+    "scss_file": "./scss/screen.scss",
+    "sqs_url": "put url here",
+    "repo_url": "pur url here"
   },
   "scripts": {
     "js:dev": "webpack -d",
@@ -21,17 +23,26 @@
     "css:dev": "npm-run-all sassy",
     "css:prod": "npm-run-all sassy postcss",
 
-    "sqs:build": "squarespace assemble -d './template' && webpack --config './template/webpack.config.js' --display-modules",
-    "sqs:watch": "squarespace assemble -d './template' && webpack --config './template/webpack.config.js' --watch --hide-modules",
-    "sqs:server": "squarespace runserver --auth -T -d './template'",
-    "sqs:start": "squarespace setup -d './template' && (npm run sqs:watch & npm run sqs:server)",
-    "sqs:deploy": "squarespace setup -d './template' && squarespace deploy -d './template'",
+    "sqs:setup": "squarespace setup --directory ./template",
+    "sqs:assemble:watch": "squarespace assemble --directory './template' --output './template/build' --watch --trigger-reload",
+    "sqs:assemble:build": "squarespace assemble --directory './template' --output './template/build'",
+    "sqs:server": "squarespace runserver $sqs_url --directory=./template --auth --trigger-reload",
+    "sqs:deploy": "squarespace deploy --directory './template/build' $repo_url",
 
-    "watch": "npm-run-all --parallel watch:js watch:scss sqs:start",
+    "sqs:js:build": "webpack --config './template/webpack.config.js' --display-modules",
+    "sqs:js:watch": "webpack --config './template/webpack.config.js' --watch --hide-modules",
+
+    "sqs:build": "npm-run-all sqs:assemble:build sqs:js:build",
+    "sqs:watch": "npm-run-all --parallel sqs:assemble:watch sqs:js:watch",
+    "sqs:start": "npm-run-all sqs:setup --parallel sqs:watch sqs:server",
+
+    "watch": "npm-run-all --parallel watch:scss sqs:start",
     "watch:js": "onchange \"./js\" -- npm run js:dev",
     "watch:scss": "onchange \"./scss\" -- npm run css:dev",
 
-    "build": "npm-run-all js:prod css:prod sqs:build"
+    "start": "npm-run-all watch",
+    "build": "npm-run-all js:prod css:prod sqs:build",
+    "deploy": "npm-run-all sqs:setup sqs:deploy"
   },
   "devDependencies": {
     "@squarespace/toolbelt": "^0.7.5",
