@@ -1,0 +1,57 @@
+.double {
+  width: 100%;
+  font-size: 0;
+  text-align: center;
+  &__item {
+    width: 100%;
+    height: 100vh;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    @include respond-to(ipad-portrait) {
+      width: 50%;
+      max-height: 800px;
+    }
+    &--left {
+      background: url("/assets/buy.jpg") no-repeat center center;
+      background-size: cover;
+      h2 { max-width: 420px; }
+    }
+    &--right {
+      background: url("/assets/sell.jpg") no-repeat center center;
+      background-size: cover;
+      h2 { max-width: 390px; }
+    }
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100vh;
+      max-height: 800px;
+      margin-right: -0.025rem;
+    }
+  }
+  &__inner {
+    width: 100%;
+    max-width: 98%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  h1, h2, { color: $white; }
+  h1:before {
+    @include center();
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 11px 17px 11px;
+    border-color: transparent transparent $red transparent;
+    margin-bottom: 30px;
+  }
+  h2 {
+    @include center();
+    &:first-of-type { margin-top: 30px; }
+    &:last-of-type { margin-bottom: 20px !important; }
+  }
+}

@@ -10,14 +10,11 @@
  * Document
 *******************************************************************************/
 html {
-  background-color: $gray;
-  box-sizing: border-box;
+  font-size: 100%;
   overflow-x: hidden;
   overflow-y: auto;
 }
 body {
-  @include font-sans();
-  background-color: $gray;
   color: $black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,26 +29,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-main:not(#welcome) {
-  padding-top: 60px;
-  @include respond-to(mobile-plus) {
-    padding-top: 78px;
-  }
-}
-main#contact {
-  background: url("/assets/contact-background.jpg") no-repeat center center;
-  background-size: cover;
-}
-.contact {
-  width: 100%;
-  max-width: 600px;
-  @include center;
-  padding: 50px 16px;
-  color: $white;
-  @include respond-to(ipad-portrait) {
-    padding: 100px 0;
-  }
-}
 
 /******************************************************************************
  * Box Sizing
@@ -59,16 +36,12 @@ main#contact {
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
-}
-
-.site-container {
-  overflow-x: hidden;
-  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .site-title-heading {
-  &:after {
-    display: none;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-indent: -9999px;
 }

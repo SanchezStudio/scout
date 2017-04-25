@@ -1,0 +1,26 @@
+.button {
+  display: block;
+  width: 100%;
+  &--left { text-align: left; }
+  &--right { text-align: right; }
+  &--center { text-align: center; }
+  &__link {
+    display: inline-block;
+    min-width: 190px;
+    max-height: 60px;
+    min-height: 60px;
+    line-height: 60px;
+    font-family: brandon-grotesque, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: $white;
+    letter-spacing: .28rem;
+    background-color: $red;
+    text-transform: uppercase;
+    text-align: center;
+    padding-left: 35px;
+    padding-right: 35px;
+    &--left { margin-left: 3px; }
+    &--right { margin-right: 3px; }
+  }
+}

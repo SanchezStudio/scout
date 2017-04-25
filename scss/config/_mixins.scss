@@ -34,12 +34,16 @@ $breakpoints: (
 @mixin font-normal() {
   font-stretch: normal;
 }
-@mixin font-sans() {
-  font-family: $sans;
+@mixin font-primary() {
+  font-family: $primary;
   @include font-normal();
 }
-@mixin font-serif() {
-  font-family: $serif;
+@mixin font-secondary() {
+  font-family: $secondary;
+  @include font-normal();
+}
+@mixin font-tertiary() {
+  font-family: $tertiary;
   @include font-normal();
 }
 
@@ -47,132 +51,87 @@ $breakpoints: (
 // Fonts
 // ======================================
 
-@mixin b-sans() {
-  font-weight: 700;
-}
-@mixin b-serif() {
-  font-weight: 600;
-}
 @mixin p() {
-  font-size: 18px;
+  @include font-secondary();
+  font-size: $body;
   line-height: 1.5;
-  letter-spacing: 0.075rem;
-  @include font-serif();
-  @include respond-to(ipad-landscape) {
-    font-size: $p-size;
-  }
+  letter-spacing: 0.04rem;
 }
 @mixin a() {
-  color: $black;
+  @include font-secondary();
   display: inline;
-  font-size: $p-size;
+  font-size: $body;
   text-decoration: none;
-  @include font-serif();
-  @include respond-to(ipad-landscape) {
-    font-size: $p-size;
-    font-size: 1.75vw;
-  }
+  color: $black;
+  letter-spacing: 0.04rem;
 }
 @mixin h1() {
-  @include font-sans();
-  display: inline-block;
-  font-size: $h1-size;
-  font-weight: 400;
+  @include font-primary();
+  font-size: 40px;
+  line-height: 45px;
   text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: .1rem;
-  // &:after {
-  //   content: '';
-  //   display: block;
-  //   width: 55px;
-  //   height: 4px;
-  //   background-color: $red;
-  //   margin-top: 25px;
-  //   margin-bottom: 30px;
-  // }
+  letter-spacing: .04rem;
+  font-weight: normal;
+  @include respond-to(mobile-plus) {
+    font-size: $h1;
+    line-height: 65px;
+  }
 }
 @mixin h2() {
-  @include font-sans();
-  display: block;
-  position: relative;
-  font-size: $h2-size;
-  text-transform: uppercase;
-  color: white;
-  letter-spacing: 0.25rem;
-  font-weight: 400;
-  line-height: 1.2;
-  text-align: center;
-  // &:after {
-  //   content: '';
-  //   display: block;
-  //   position: relative;
-  //   width: 100px;
-  //   height: 4px;
-  //   background-color: $red;
-  //   margin: 20px auto 80px;
-  //   z-index: 1;
-  // }
+  @include font-primary();
+  font-size: 19px;
+  line-height: 28px;
+  color: $white;
+  font-weight: lighter;
+  letter-spacing: 0.02rem;
+  @include respond-to(ipad-portrait) {
+    font-size: $h2;
+    line-height: 37px;
+  }
 }
 @mixin h3() {
-  font-size: $h3-size;
-  font-weight: 700;
-  letter-spacing: 0.25rem;
+  @include font-tertiary();
+  font-size: $h3;
+  color: $red;
+  letter-spacing: 0.28rem;
   text-transform: uppercase;
-  color: $black;
-  @include font-sans();
-  // &:after {
-  //   content: '';
-  //   display: block;
-  //   width: 50px;
-  //   height: 4px;
-  //   background-color: $red;
-  //   margin-top: 20px;
-  //   margin-bottom: 20px;
-  // }
 }
+
 @mixin h4() {
-  font-size: $h4-size;
-}
-@mixin h6() {
-  font-size: $h6-size;
+  @include font-tertiary();
+  font-size: $h4;
+  color: $white;
+  letter-spacing: 0.48rem;
   text-transform: uppercase;
-  letter-spacing: 0.6rem;
+}
+
+@mixin button() {
+  @include font-tertiary();
+  display: inline-block;
+  width: 190px;
+  padding: 24px 10px;
+  background-color: $red;
+  font-size: $small;
+  color: $white;
+  letter-spacing: 0.28rem;
+  cursor: pointer;
+}
+
+@mixin hero($height) {
+  position: relative;
+  width: 100%;
+  height: $height;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   text-align: center;
 }
 
-@mixin button($color: $red, $background-color: $white) {
-  display: inline-block;
-  font-size: $small-size;
-  color: $color;
-  padding: 20px 35px;
-  background-color: $background-color;
-  letter-spacing: .3rem;
-  text-transform: uppercase;
-  margin-top: 30px;
-  transition: 600ms ease;
-  cursor: pointer;
-  @include font-sans();
-  .no-touch &:hover {
-    background-color: $color;
-    color: $background-color;
-  }
-}
-
-@mixin divider($width, $margin) {
-  &:after {
-    content: '';
-    display: block;
-    width: $width;
-    height: 4px;
-    background-color: $red;
-    margin: $margin;
-    z-index: 1;
-  }
-}
-
-// ======================================
-// Floats
-// ======================================
+// ======================================================
+// Floats - Hey, how about, don't use floats for layout
+// ======================================================
 
 @mixin clearfix() {
   &:after {
@@ -180,6 +139,10 @@ $breakpoints: (
     display: table;
     clear: both;
   }
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: calc(#{$expression});
 }
 
 // ======================================
@@ -197,17 +160,4 @@ $breakpoints: (
 
 @mixin right() {
   margin-left: auto;
-}
-
-
-@mixin hero($height) {
-  position: relative;
-  width: 100%;
-  height: $height;
-  padding-left: 32px;
-  padding-right: 32px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  text-align: center;
 }
