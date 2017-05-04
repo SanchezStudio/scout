@@ -82,8 +82,8 @@ export default class GalleryList extends Component {
               let active;
               this.state.currentIndex === index ? active = "controls__item--active" : active = "";
               return (
-                <div className="controls__item-container" onClick={() => { this.goTo(index)} }>
-                  <div key={`control-${item.id}`} className={`controls__item ${active}`}></div>
+                <div key={`control-${item.id}`} className="controls__item-container" onClick={() => { this.goTo(index)} }>
+                  <div className={`controls__item ${active}`}></div>
                 </div>
               )
             })}

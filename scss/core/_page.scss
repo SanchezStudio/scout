@@ -1,0 +1,12 @@
+main, .footer {
+  overflow: hidden;
+  @include respond-to(ipad-portrait) {
+    width: #{"calc( ~\"100% - 90px\" )"};
+    float: right;
+    &:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+label.title, .required {
+  @include h5();
+  margin-bottom: rem-calc(5);
+}
+.required { color: $red; }
+.form-wrapper .field-list .field .field-element {
+  margin-bottom: 0;
+}
+.form-wrapper .field-list .field {
+  margin-bottom: rem-calc($spacer-md - 3);
+  &:last-of-type {
+    margin-bottom: rem-calc($spacer-md);
+  }
+}
+
+body:not(.button-style-default).button-corner-style-square .sqs-editable-button,
+body:not(.button-style-default).button-corner-style-square .sqs-editable-button-shape,
+body:not(.button-style-default).button-style-solid .sqs-editable-button,
+body:not(.button-style-default).button-style-solid .sqs-editable-button-style,
+body:not(.button-style-default) .sqs-editable-button,
+body:not(.button-style-default) .sqs-editable-button-font,
+body:not(.button-style-default) .sqs-editable-button,
+body:not(.button-style-default) .sqs-editable-button-color,
+body:not(.button-style-default) .sqs-editable-button,
+body:not(.button-style-default) .sqs-editable-button-layout,
+.form-wrapper input[type=submit],
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  position: relative;
+  display: inline-block;
+  min-width: rem-calc(190px);
+  max-height: rem-calc(60px);
+  min-height: rem-calc(60px);
+  line-height: rem-calc(60px);
+  font-family: brandon-grotesque, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: rem-calc(12px);
+  font-weight: bold;
+  color: $white;
+  letter-spacing: .28rem;
+  background-color: $red;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 rem-calc(35);
+  margin: 0;
+}

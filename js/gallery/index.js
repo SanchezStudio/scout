@@ -12,9 +12,8 @@ class GalleryContainer extends Component {
     }
   }
   componentDidMount() {
-    axios(`${this.props.url}?format=json`)
+    axios(`/${this.props.url}?format=json`)
       .then((response) => {
-        console.log(response);
         this.setState({ items: response.data.items });
       })
       .catch((response) => {

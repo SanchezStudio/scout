@@ -6,7 +6,7 @@
   background-position: center center;
   background-size: cover;
   &--home-hero {
-    min-height: 800px;
+    min-height: rem-calc(800px);
     h1:before {
       content: '';
       display: block;
@@ -17,7 +17,7 @@
       border-width: 0 11px 17px 11px;
       border-color: transparent transparent $red transparent;
       @include center();
-      margin-bottom: $spacer-sm;
+      margin-bottom: rem-calc($spacer-sm);
     }
   }
   &:before {
@@ -31,14 +31,17 @@
     display: inline-block;
     vertical-align: middle;
     width: 100%;
-    max-width: 98%;
+    max-width: #{"calc( ~\"100% - 10px\" )"};
     color: $white;
     padding: 20px; // remove padding after content is added.
+    @include respond-to(ipad-portrait) {
+      padding: 0;
+    }
   }
   &__message {
     display: block;
     position: absolute;
-    bottom: 30px;
+    bottom: rem-calc(30px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
@@ -57,9 +60,9 @@
     z-index: 5;
   }
   & .sqs-block-html .sqs-block-content > p {
-    max-width: 490px;
-    margin-top: 28px;
-    margin-bottom: 22px;
+    max-width: rem-calc(490px);
+    margin-top: rem-calc(28px);
+    margin-bottom: rem-calc(22px);
     @include center();
   }
   .button {
@@ -67,6 +70,6 @@
     @include respond-to(mobile-plus) { display: block; }
   }
   & .sqs-block.code-block.sqs-block-code {
-    padding-bottom: 2px !important;
+    padding-bottom: rem-calc(2px) !important;
   }
 }

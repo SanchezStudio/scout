@@ -1,26 +1,28 @@
 .button {
   display: block;
+  position: relative;
   width: 100%;
   &--left { text-align: left; }
   &--right { text-align: right; }
   &--center { text-align: center; }
   &__link {
+    position: relative;
     display: inline-block;
-    min-width: 190px;
-    max-height: 60px;
-    min-height: 60px;
-    line-height: 60px;
+    min-width: rem-calc(190px);
+    max-height: rem-calc(60px);
+    min-height: rem-calc(60px);
+    line-height: rem-calc(60px);
     font-family: brandon-grotesque, 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: rem-calc(12px);
     font-weight: bold;
     color: $white;
     letter-spacing: .28rem;
     background-color: $red;
     text-transform: uppercase;
     text-align: center;
-    padding-left: 35px;
-    padding-right: 35px;
-    &--left { margin-left: 3px; }
-    &--right { margin-right: 3px; }
+    padding-left: rem-calc(35px);
+    padding-right: rem-calc(35px);
+    &--left { margin-left: rem-calc(3px); }
+    &--right { margin-right: rem-calc(3px); }
   }
 }

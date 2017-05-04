@@ -1,4 +1,6 @@
 //import './util/images';
+import AOS from 'aos';
+AOS.init();
 import './nav';
 import './gallery';
 

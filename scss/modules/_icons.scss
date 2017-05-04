@@ -1,21 +1,21 @@
 .icons {
   width: 100%;
-  max-width: 1020px;
+  max-width: rem-calc(1020px);
   @include center();
   text-align: center;
   font-size: 0;
-  padding-top: $spacer-xl;
-  padding-bottom: $spacer-xl;
+  padding-top: rem-calc($spacer-xl);
+  padding-bottom: rem-calc($spacer-xl);
   @include respond-to(mobile-plus) {
-    padding-top: $spacer-xxl;
-    padding-bottom: $spacer-xxl;
+    padding-top: rem-calc($spacer-xxl);
+    padding-bottom: rem-calc($spacer-xxl);
   }
   &__item {
     display: block;
     vertical-align: top;
     width: 100%;
-    max-width: 290px;
-    margin-top: $spacer-xl;
+    max-width: rem-calc(290px);
+    margin-top: rem-calc($spacer-xl);
     @include center();
     &:first-of-type { margin-top: 0; }
     @include respond-to(mobile-plus) {
@@ -30,8 +30,8 @@
     }
   }
   h3 {
-    margin-top: 25px !important;
-    margin-bottom: 20px;
+    margin-top: rem-calc(25px) !important;
+    margin-bottom: rem-calc(20px);
   }
   & .sqs-layout:not(.sqs-editing) .sqs-row + .sqs-row .sqs-block:not(.float):first-child,
   & [class*=sqs-col] .sqs-block,

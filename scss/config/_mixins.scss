@@ -9,6 +9,7 @@ $breakpoints: (
   'ipad-landscape' : ( min-width: 1024px ),
   'mbp-thirteen'   : ( min-width: 1280px ),
   'mbp-fifteen'    : ( min-width: 1440px ),
+  'mac'            : ( min-width: 1920px ),
   'retina'         : ( min-width: 2880px )
 );
 
@@ -53,45 +54,45 @@ $breakpoints: (
 
 @mixin p() {
   @include font-secondary();
-  font-size: $body;
+  font-size: rem-calc($body);
   line-height: 1.5;
   letter-spacing: 0.04rem;
 }
 @mixin a() {
   @include font-secondary();
   display: inline;
-  font-size: $body;
+  font-size: rem-calc($body);
   text-decoration: none;
   color: $black;
   letter-spacing: 0.04rem;
 }
 @mixin h1() {
   @include font-primary();
-  font-size: 40px;
-  line-height: 45px;
+  font-size: rem-calc(40px);
+  line-height: rem-calc(45px);
   text-transform: uppercase;
   letter-spacing: .04rem;
   font-weight: normal;
   @include respond-to(mobile-plus) {
-    font-size: $h1;
-    line-height: 65px;
+    font-size: rem-calc($h1);
+    line-height: rem-calc(65px);
   }
 }
 @mixin h2() {
   @include font-primary();
-  font-size: 19px;
-  line-height: 28px;
+  font-size: rem-calc(19px);
+  line-height: rem-calc(28px);
   color: $white;
   font-weight: lighter;
   letter-spacing: 0.02rem;
   @include respond-to(ipad-portrait) {
-    font-size: $h2;
-    line-height: 37px;
+    font-size: rem-calc($h2);
+    line-height: rem-calc(37px);
   }
 }
 @mixin h3() {
   @include font-tertiary();
-  font-size: $h3;
+  font-size: rem-calc($h3);
   color: $red;
   letter-spacing: 0.28rem;
   text-transform: uppercase;
@@ -99,17 +100,27 @@ $breakpoints: (
 
 @mixin h4() {
   @include font-tertiary();
-  font-size: $h4;
-  color: $white;
-  letter-spacing: 0.48rem;
+  font-size: rem-calc($h4);
+  color: $black;
+  letter-spacing: 0.14rem;
   text-transform: uppercase;
+  font-weight: normal;
+}
+
+@mixin h5() {
+  @include font-tertiary();
+  font-size: rem-calc($h5);
+  color: $black;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  font-weight: normal;
 }
 
 @mixin button() {
   @include font-tertiary();
   display: inline-block;
-  width: 190px;
-  padding: 24px 10px;
+  width: rem-calc(190px);
+  padding: rem-calc(24px) rem-calc(10px);
   background-color: $red;
   font-size: $small;
   color: $white;
