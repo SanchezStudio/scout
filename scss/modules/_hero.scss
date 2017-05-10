@@ -20,6 +20,10 @@
       margin-bottom: rem-calc($spacer-sm);
     }
   }
+  &--buy-hero {
+    img { margin-bottom: rem-calc(10); }
+    p { color: $black; }
+  }
   &:before {
     content: '';
     display: inline-block;
@@ -45,6 +49,9 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
+    padding: 20px;
+    width: 50%;
+    height: 20px;
   }
   &__link {
     display: block;

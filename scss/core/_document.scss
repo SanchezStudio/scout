@@ -13,11 +13,9 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   font-size: 85%;
-  @include respond-to(ipad-portrait) { font-size: 90% }
-  @include respond-to(ipad-landscape) { font-size: 95%; }
-  @include respond-to(mbp-thirteen) { font-size: 100%; }
-  // @include respond-to(mbp-fifteen) { font-size: 95%; }
-  // @include respond-to(mac) { font-size: 100%; }
+  @include respond-to(ipad-landscape) { font-size: 90%; }
+  @include respond-to(mbp-fifteen) { font-size: 95%; }
+  @include respond-to(mac) { font-size: 100%; }
 }
 body {
   color: $black;

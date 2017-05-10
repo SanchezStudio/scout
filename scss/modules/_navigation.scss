@@ -157,6 +157,7 @@
       &:hover { color: $red; }
       .nav-scrolled & {
         color: $black;
+        &:hover { color: $red; }
       }
     }
   }

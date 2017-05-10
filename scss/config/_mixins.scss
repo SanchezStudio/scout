@@ -68,27 +68,19 @@ $breakpoints: (
 }
 @mixin h1() {
   @include font-primary();
-  font-size: rem-calc(40px);
-  line-height: rem-calc(45px);
+  font-size: rem-calc($h1);
+  line-height: rem-calc(65px);
   text-transform: uppercase;
   letter-spacing: .04rem;
   font-weight: normal;
-  @include respond-to(mobile-plus) {
-    font-size: rem-calc($h1);
-    line-height: rem-calc(65px);
-  }
 }
 @mixin h2() {
   @include font-primary();
-  font-size: rem-calc(19px);
-  line-height: rem-calc(28px);
+  font-size: rem-calc($h2);
+  line-height: rem-calc(37px);
   color: $white;
   font-weight: lighter;
   letter-spacing: 0.02rem;
-  @include respond-to(ipad-portrait) {
-    font-size: rem-calc($h2);
-    line-height: rem-calc(37px);
-  }
 }
 @mixin h3() {
   @include font-tertiary();
@@ -105,6 +97,10 @@ $breakpoints: (
   letter-spacing: 0.14rem;
   text-transform: uppercase;
   font-weight: normal;
+  .hero--header & {
+    color: $white;
+    letter-spacing: 0.48rem;
+  }
 }
 
 @mixin h5() {

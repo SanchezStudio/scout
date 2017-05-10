@@ -1,6 +1,6 @@
 .testimonial {
   width: 100%;
-  padding: 20px;
+  padding: rem-calc(20);
   @include respond-to(ipad-portrait) {
     padding-top: $spacer-xxl;
     padding-bottom: $spacer-xxl;
@@ -8,14 +8,14 @@
   &__inner {
     position: relative;
     width: 100%;
-    max-width: 1330px;
+    max-width: rem-calc(1330px);
     @include center();
     @include clearfix();
   }
   &__images {
     position: relative;
     width: 100%;
-    max-width: 1130px;
+    max-width: rem-calc(1130px);
     overflow: hidden;
     @include respond-to(ipad-portrait) {
       float: right;
@@ -43,16 +43,16 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    height: 100vh;
-    height: #{"calc( ~\"100vh - 40px\" )"};
-    min-height: 630px;
+    height: rem-calc(700);
+    // height: #{"calc( ~\"100vh - 2.5rem\" )"};
+    // min-height: rem-calc(630px);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: .5;
     z-index: 6;
     @include respond-to(ipad-portrait) {
-      max-height: 700px;
+      // max-height: rem-calc(700px);
     }
   }
   &__quotes {
@@ -65,8 +65,8 @@
     overflow: hidden;
     @include respond-to(ipad-portrait) {
       width: percentage(500 / 1330);
-      max-width: 500px;
-      min-width: 500px;
+      max-width: rem-calc(500px);
+      min-width: rem-calc(500px);
       height: auto;
       top: 50%;
       transform: translateY(-50%);
@@ -95,11 +95,14 @@
   &__quote {
     display: inline-block;
     vertical-align: middle;
-    padding: 35px;
+    padding: rem-calc(35px);
     @include respond-to(ipad-portrait) {
-      padding: 60px;
+      padding: rem-calc(60px);
       text-align: left;
     }
+  }
+  &__author {
+    margin-top: rem-calc($spacer-xs);
   }
   .sqs-layout > .sqs-row {
     margin-left: 0;
@@ -140,10 +143,10 @@
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    padding: 30px 15px;
+    padding: rem-calc(30px) rem-calc(15px);
     cursor: pointer;
     @include respond-to(ipad-portrait) {
-      padding: 50px 15px;
+      padding: rem-calc(50px) rem-calc(15px);
     }
   }
 }
