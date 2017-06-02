@@ -1,0 +1,94 @@
+.footer {
+  position: relative;
+  padding: 30.5px 15px;
+  background-color: $black;
+  @include respond-to(ipad-landscape) {
+    padding: ($spacer-sm - 8) $spacer-sm;
+    height: 80px;
+    &__left { direction: rtl; }
+  }
+  //&__block { padding: 20px; } // remove padding after content is added
+  &__left, &__right {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 0;
+  }
+  &__right {
+    position: absolute;
+    right: 20px;
+    top: 48%;
+    transform: translateY(-50%);
+    z-index: 1;
+    @include respond-to(ipad-landscape) {
+      right: 40px;
+      top: 50%;
+    }
+  }
+  &__social, &__copyright {
+    display: block;
+    direction: ltr;
+    @include respond-to(ipad-landscape) {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    a {
+      color: $red;
+      font-size: 11px;
+      letter-spacing: .14rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+  }
+  &__block {
+    display: inline-block;
+    margin-right: 34px;
+    @include respond-to(ipad-landscape) {
+      margin-right: rem-calc($spacer-sm - 5);
+    }
+  }
+  &__copyright {
+    margin-top: rem-calc(10);
+    @include respond-to(ipad-landscape) {
+      margin-right: rem-calc($spacer-sm);
+      margin-top: 0;
+    }
+  }
+  &-copy {
+    @include font-tertiary();
+    color: #999;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .14rem;
+    font-weight: 500;
+    strong { font-weight: 900; }
+  }
+  &__logo {
+    display: inline-block;
+    vertical-align: middle;
+    height: 57px;
+    &:first-of-type { margin-right: 20px; }
+    @include respond-to(ipad-landscape) {
+      &:first-of-type { margin-right: 40px; }
+      height: 45px;
+    }
+  }
+  .sqs-layout > .sqs-row {
+    margin: 0;
+  }
+  .sqs-layout:not(.sqs-editing) > .sqs-row:first-child > [class*=sqs-col]:first-child > .sqs-block:last-child, .sqs-layout:not(.sqs-editing) .sqs-block + .sqs-row .sqs-block:not(.float):last-child,
+  [class*=sqs-col] .sqs-block {
+    padding: 0;
+  }
+  &__bar {
+    display: none;
+    @include respond-to(ipad-landscape) {
+      display: inline;
+    }
+  }
+  &__br {
+    @include respond-to(ipad-landscape) {
+      display: none;
+    }
+  }
+}

@@ -5,7 +5,8 @@
 $breakpoints: (
   'mobile'         : ( min-width: 480px  ),
   'mobile-plus'    : ( min-width: 640px  ),
-  'ipad-portrait'  : ( min-width: 768px  ),
+  'ipad-portrait'  : ( min-width: 769px  ),
+  'nav'            : ( min-width: 769px  ),
   'ipad-landscape' : ( min-width: 1024px ),
   'mbp-thirteen'   : ( min-width: 1280px ),
   'mbp-fifteen'    : ( min-width: 1440px ),
@@ -68,18 +69,21 @@ $breakpoints: (
 }
 @mixin h1() {
   @include font-primary();
-  font-size: rem-calc($h1);
-  line-height: rem-calc(65px);
+  font-size: 40px;
+  line-height: 1.18;
   text-transform: uppercase;
-  letter-spacing: .04rem;
-  font-weight: normal;
+  letter-spacing: 0.04rem;
+  font-weight: 500;
+  @include respond-to(ipad-portrait) {
+    font-size: rem-calc($h1);
+  }
 }
 @mixin h2() {
   @include font-primary();
   font-size: rem-calc($h2);
   line-height: rem-calc(37px);
   color: $white;
-  font-weight: lighter;
+  font-weight: 400;
   letter-spacing: 0.02rem;
 }
 @mixin h3() {
@@ -88,6 +92,7 @@ $breakpoints: (
   color: $red;
   letter-spacing: 0.28rem;
   text-transform: uppercase;
+  font-weight: 900;
 }
 
 @mixin h4() {
@@ -96,7 +101,7 @@ $breakpoints: (
   color: $black;
   letter-spacing: 0.14rem;
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: 900;
   .hero--header & {
     color: $white;
     letter-spacing: 0.48rem;
@@ -106,10 +111,29 @@ $breakpoints: (
 @mixin h5() {
   @include font-tertiary();
   font-size: rem-calc($h5);
-  color: $black;
+  color: $white;
+  letter-spacing: 0.48rem;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+@mixin h6() {
+  @include font-tertiary();
+  font-size: rem-calc($h6);
   letter-spacing: 0.14rem;
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: 900;
+}
+
+
+@mixin quote() {
+  @include font-tertiary();
+  font-size: rem-calc(95px);
+  color: $red;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+  line-height: .55;
 }
 
 @mixin button() {

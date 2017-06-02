@@ -5,8 +5,10 @@ export default class GalleryImage extends Component {
     super();
   }
   render() {
+    let active;
+    this.props.active ? active = "testimonial__image--active" : active = "";
     return (
-      <div className="testimonial__image" style={this.props.style}></div>
+      <div className={`testimonial__image ${active}`} style={this.props.style}></div>
     )
   }
 }

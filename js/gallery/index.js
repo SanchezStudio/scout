@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import { procEvent } from "../util/helpers";
 import GalleryList from "./components/GalleryList";
 
 class GalleryContainer extends Component {
@@ -15,6 +16,7 @@ class GalleryContainer extends Component {
     axios(`/${this.props.url}?format=json`)
       .then((response) => {
         this.setState({ items: response.data.items });
+        procEvent(window.document, "DOMContentLoaded");
       })
       .catch((response) => {
         console.error(response);

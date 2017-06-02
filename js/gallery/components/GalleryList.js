@@ -11,7 +11,7 @@ export default class GalleryList extends Component {
     }
   }
   componentDidMount() {
-    this.timer = setInterval(() => { this.goToNext(); }, 10000);
+    this.timer = setInterval(() => { this.goToNext(); }, 16000);
   }
   componentWillUnmount() {
     clearInterval(this.timer);
@@ -22,71 +22,66 @@ export default class GalleryList extends Component {
     var items = this.props.items;
     var itemsLength = items.length;
     if (index < 0) {
+      this.setState({ currentIndex: itemsLength - 1})
       return;
     } else if (index > itemsLength - 1) {
       this.setState({ currentIndex: 0 });
-      prefix(slider.style, "Transform", "translateX(0%)");
-      prefix(quotes.style, "Transform", "translateX(0%)");
       return;
     }
-    prefix(slider.style, "Transform", "translateX(-" + 100 / itemsLength * index + "%)");
-    prefix(quotes.style, "Transform", "translateX(-" + 100 / itemsLength * index + "%)");
     this.setState({ currentIndex: index });
   }
   goToNext(e) {
-    if (e) {
-      e.preventDefault();
-      this.setState({ clicked: true });
-    }
+    if (e) { e.preventDefault(); }
     this.goTo(this.state.currentIndex + 1);
   }
   goToPrevious(e) {
-    if (e) {
-      e.preventDefault();
-      this.setState({ clicked: true });
-    }
+    if (e) { e.preventDefault(); }
     this.goTo(this.state.currentIndex - 1);
   }
   render() {
-    let listStyles = { width: `${this.props.items.length * 100}%` }
     return (
       <div className="testimonial">
         <div className="testimonial__inner">
           <div className="testimonial__images">
-            <div className="testimonial__image-list" style={listStyles} ref={(slider) => {this.slider = slider}}>
-              {this.props.items.map((item) => {
-                let itemStyles = {
-                  width: `${100 / this.props.items.length}%`,
-                  backgroundImage: `url(${item.assetUrl})`
-                }
+            <div className="testimonial__image-list" ref={(slider) => {this.slider = slider}}>
+              {this.props.items.map((item, index) => {
+                let itemStyles = { backgroundImage: `url(${item.assetUrl})` }
+                let active;
+                this.state.currentIndex === index ? active = true : active = false;
                 return (
-                  <GalleryImage key={`image-${item.id}`} style={itemStyles} />
+                  <GalleryImage key={`image-${item.id}`} style={itemStyles} active={active} />
                 )
               })}
             </div>
           </div>
           <div className="testimonial__quotes">
-            <div className="testimonial__quote-container">
-              <div className="testimonial__quote-list" style={listStyles} ref={(quotes) => {this.quotes = quotes}}>
-                {this.props.items.map((item) => {
-                  let itemStyles = {
-                    width: `${100 / this.props.items.length}%`
-                  }
-                  return ( <GalleryQuote key={`quote-${item.id}`} style={itemStyles} quote={item.body} author={item.title} /> )
-                })}
-              </div>
-            </div>
-          </div>
-          <div className="controls">
             {this.props.items.map((item, index) => {
               let active;
-              this.state.currentIndex === index ? active = "controls__item--active" : active = "";
+              this.state.currentIndex === index ? active = true : active = false;
+              return ( <GalleryQuote key={`quote-${item.id}`} quote={item.body} author={item.title} active={active}/> )
+            })}
+          </div>
+          {/*
+          indicators
+          <div className="indicators">
+            {this.props.items.map((item, index) => {
+              let active;
+              this.state.currentIndex === index ? active = "indicators__item--active" : active = "";
               return (
-                <div key={`control-${item.id}`} className="controls__item-container" onClick={() => { this.goTo(index)} }>
-                  <div className={`controls__item ${active}`}></div>
+                <div key={`indicators-${item.id}`} className="indicators__item-container" onClick={() => { this.goTo(index)} }>
+                  <div className={`indicators__item ${active}`}></div>
                 </div>
               )
             })}
+          </div>
+          */}
+          <div className="controls">
+            <div className="controls__item controls__item--left" onClick={() => {this.goToPrevious()} }>
+              <img className="controls__image" src="/assets/icon-arrow-left.svg" alt=""/>
+            </div>
+            <div className="controls__item controls__item--right" onClick={() => {this.goToNext()} }>
+              <img className="controls__image" src="/assets/icon-arrow-right.svg" alt=""/>
+            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,20 @@
 .button {
-  display: block;
+  display: inline-block;
   position: relative;
   width: 100%;
-  &--left { text-align: left; }
-  &--right { text-align: right; }
+  font-size: 0;
+  &-container {
+    font-size: 0;
+    text-align: center;
+  }
+  &--left {
+    text-align: left;
+    margin-left: rem-calc(20);
+  }
+  &--right {
+    text-align: right;
+    margin-right: rem-calc(20);
+  }
   &--center { text-align: center; }
   &__link {
     position: relative;
@@ -12,9 +23,9 @@
     max-height: rem-calc(60px);
     min-height: rem-calc(60px);
     line-height: rem-calc(60px);
-    font-family: brandon-grotesque, 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'brandon-grotesque', "Helvetica Neue", Helvetica, sans-serif;
     font-size: rem-calc(12px);
-    font-weight: bold;
+    font-weight: 900;
     color: $white;
     letter-spacing: .28rem;
     background-color: $red;
@@ -22,7 +33,18 @@
     text-align: center;
     padding-left: rem-calc(35px);
     padding-right: rem-calc(35px);
-    &--left { margin-left: rem-calc(3px); }
-    &--right { margin-right: rem-calc(3px); }
+    transition: color 400ms ease;
+    .button:hover & {
+      color: rgba(255, 255, 255, .7);
+    }
   }
+}
+body:not(.button-style-default).button-style-solid .sqs-editable-button,
+body:not(.button-style-default).button-style-solid .sqs-editable-button-style {
+  transition: color 400ms ease;
+}
+body:not(.button-style-default).button-style-solid .sqs-editable-button:hover,
+body:not(.button-style-default).button-style-solid .sqs-editable-button-style:hover {
+  opacity: 1;
+  color: rgba(255, 255, 255, .7);
 }

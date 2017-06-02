@@ -27,6 +27,7 @@
     "build": "npm-run-all js:prod css:prod"
   },
   "devDependencies": {
+    "@squarespace/toolbelt": "^0.8.4",
     "autoprefixer": "^6.7.1",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
@@ -40,8 +41,12 @@
   },
   "dependencies": {
     "@squarespace/core": "^0.1.5",
+    "@squarespace/video-background": "^2.0.0",
+    "@squarespace/video-background-rendering": "^1.0.4",
+    "@vimeo/player": "^2.1.0",
     "aos": "^2.1.1",
     "axios": "^0.13.1",
+    "headroom.js": "^0.9.3",
     "immutability-helper": "^2.1.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"

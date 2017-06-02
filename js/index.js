@@ -1,7 +1,6 @@
-//import './util/images';
+require('smoothscroll-polyfill').polyfill();
 import AOS from 'aos';
 AOS.init();
 import './nav';
+import './home';
 import './gallery';
-
-console.log("Oh shit, whaddup");

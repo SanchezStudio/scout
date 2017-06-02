@@ -1,0 +1,271 @@
+.formy, .calendly {
+  width: 100%;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding-top: rem-calc(96);
+  background-color: $darkwhite;
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    margin-right: -0.025rem;
+  }
+  &__inner {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: rem-calc(875px);
+    color: $white;
+    @include respond-to(ipad-landscape) { padding: 0; }
+  }
+  h1 {
+    color: $black;
+    &:before {
+      content: '';
+      display: block;
+      width: rem-calc(22);
+      height: rem-calc(16.81);
+      background: url("/assets/icon-arrow.svg") no-repeat center center;
+      background-size: rem-calc(22) rem-calc(16.81);
+      @include center();
+      margin-bottom: rem-calc($spacer-sm);
+    }
+  }
+  h2, .form-submission-html {
+    color: $black;
+    text-align: center;
+  }
+  &__form { text-align: left; }
+  & .sqs-block-html .sqs-block-content > h2 {
+    color: $black;
+    margin-top: rem-calc($spacer-xs);
+    margin-bottom: rem-calc($spacer-xl);
+    @include center();
+  }
+  .form-wrapper .field-list {
+    color: $black;
+    @include respond-to(ipad-portrait) {
+      column-count: 2;
+      column-gap: rem-calc(54);
+    }
+  }
+  .form-button-wrapper { margin-top: rem-calc(42); }
+  .sqs-layout > .sqs-row { margin: 0; }
+  .sqs-layout:not(.sqs-editing)>.sqs-row:first-child>[class*=sqs-col]:first-child>.sqs-block:last-child,
+  .sqs-layout:not(.sqs-editing) .sqs-block+.sqs-row .sqs-block:not(.float):last-child,
+  [class*=sqs-col] .sqs-block,
+  .sqs-block {
+    padding: 0;
+  }
+}
+.formy {
+  padding-bottom: rem-calc(111);
+  &--sell {
+    & .sqs-block-html .sqs-block-content > h2 { max-width: rem-calc(459); }
+  }
+  &--buy {
+    background: url("/assets/img-buy-fresh-listings.jpg") no-repeat center center;
+    background-size: cover;
+  }
+  .form-wrapper .field-list .field {
+    margin-bottom: rem-calc($spacer-xs);
+  }
+}
+.calendly {
+  padding-top: 3rem;
+  padding-bottom: 6.75rem;
+  background-color: $white;
+  &--sell {
+    & .sqs-block-html .sqs-block-content > h2 { max-width: rem-calc(555); }
+  }
+  &--buy {
+   & .sqs-block-html .sqs-block-content > h2 { max-width: rem-calc(540); }
+  }
+  &__inner { max-width: rem-calc(1136px); }
+}
+
+
+html.calendly-page-scroll-locked,
+html.calendly-page-scroll-locked body {
+    height: 100%
+}
+// body {
+//     overflow: auto
+// }
+html.calendly-page-scroll-locked body {
+    overflow: hidden
+}
+.calendly-inline-widget,
+.calendly-inline-widget *,
+.calendly-badge-widget,
+.calendly-badge-widget *,
+.calendly-overlay,
+.calendly-overlay * {
+    font-size: 16px;
+    line-height: 1.2em
+}
+.calendly-inline-widget iframe,
+.calendly-badge-widget iframe,
+.calendly-overlay iframe {
+    display: inline;
+    width: 100%;
+    height: 100%
+}
+.calendly-popup-content {
+    position: relative
+}
+.calendly-popup-content.mobile {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto
+}
+.calendly-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 9999;
+    background-color: #a5a5a5;
+    background-color: rgba(31, 31, 31, 0.4)
+}
+.calendly-overlay .calendly-close-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+.calendly-overlay .calendly-popup {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    width: 80%;
+    min-width: 901px;
+    max-width: 1000px;
+    height: 90%;
+    max-height: 680px;
+    background-color: #fff
+}
+.calendly-overlay .calendly-popup .calendly-popup-content {
+    height: 100%
+}
+.calendly-overlay .calendly-popup .calendly-popup-close {
+    position: absolute;
+    top: 0;
+    right: -24px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer
+}
+.calendly-overlay .calendly-popup .calendly-popup-close:before {
+    content: "×"
+}
+.calendly-badge-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 15px;
+    z-index: 9998
+}
+.calendly-badge-widget .calendly-badge-content {
+    display: table-cell;
+    width: auto;
+    height: 45px;
+    padding: 0 30px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 5px;
+    font-family: sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer
+}
+.calendly-badge-widget .calendly-badge-content.white {
+    color: #666a73
+}
+.calendly-badge-widget .calendly-badge-content span {
+    display: block;
+    font-size: 12px;
+    font-weight: 100
+}
+@media screen and (max-width: 975px) {
+    .calendly-overlay .calendly-popup {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        -webkit-transform: none;
+        transform: none;
+        width: 100%;
+        height: auto;
+        min-width: 0;
+        max-height: none
+    }
+    .calendly-overlay .calendly-popup .calendly-popup-content {
+        background-color: #fff
+    }
+    .calendly-overlay .calendly-popup .calendly-popup-close {
+        top: -50px;
+        right: 14px;
+        font-size: 40px
+    }
+}
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    z-index: -1
+}
+.spinner>div {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: #e1e1e1;
+    border-radius: 50%/50%;
+    vertical-align: middle;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s
+}
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s
+}
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0)
+    }
+    40% {
+        -webkit-transform: scale(1)
+    }
+}
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+    40% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}

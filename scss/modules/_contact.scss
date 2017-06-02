@@ -13,18 +13,21 @@
   .sqs-block {
     padding: 0;
   }
+  // .form-wrapper .hidden, .form-wrapper.hidden { display: block; }
+  .form-wrapper .form-submission-text { margin-top: 0; }
   // as you were
   // -----------
 
   &-container {
     width: 100%;
-    max-width: rem-calc(1136px);
-    padding-left: 1rem;
-    padding-right: 1rem;
+    max-width: 908px;
+    padding-left: 30px;
+    padding-right: 30px;
     overflow: hidden;
     @include center();
     margin-bottom: rem-calc($spacer-xxl - 30);
     &:last-of-type { margin-bottom: 0; }
+    @media screen and (min-width: 1281px) { max-width: rem-calc(1136px); }
   }
   &__title,
   &__image
@@ -43,27 +46,28 @@
     z-index: 4;
   }
   &__text {
+    @include center();
     display: block;
     width: 100%;
     max-width: rem-calc(860px);
     font-size: 0;
     text-align: left;
     margin-top: rem-calc($spacer-xl);
-    @include center;
     &__item {
       @include center();
       display: block;
       vertical-align: top;
       max-width: rem-calc(410px);
       width: 100%;
+      &--right { display: none; }
+
       @include respond-to(ipad-portrait) {
         display: inline-block;
         width: #{"calc( ~\"50% - 20px\" )"};
         margin-left: 0;
         margin-right: 0;
-        &--left {
-          margin-right: 40px;
-        }
+        &--left { margin-right: 40px; }
+        &--rightt { display: inline-block; }
       }
     }
     h2 {
@@ -74,8 +78,22 @@
       margin-bottom: rem-calc(40px);
       &:last-of-type { margin-bottom: 0; }
     }
+    a {
+      transition: 400ms ease;
+      font-family: inherit;
+      font-size: inherit;
+      &:hover { color: $red; }
+    }
+    h4 {
+      font-weight: 500;
+    }
     .sqs-block-html .sqs-block-content > h3 { margin-bottom: rem-calc(10); }
     .sqs-block-code .sqs-block-content > h4 { margin-bottom: rem-calc($spacer-md - 9); }
-    .sqs-block-code .sqs-block-content > h4.no-margin-bottom { margin-bottom: 0; }
+    .sqs-block-code .sqs-block-content > h4.no-margin-bottom {
+      margin-bottom: 0;
+      display: inline-block;
+      margin-right: rem-calc(30px);
+      &:last-of-type { margin-right: 0; }
+    }
   }
 }

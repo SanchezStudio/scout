@@ -1,33 +1,42 @@
 .testimonial {
+  position: relative;
   width: 100%;
-  padding: rem-calc(20);
+  padding: 30px;
+  height: 100vh;
   @include respond-to(ipad-portrait) {
     padding-top: $spacer-xxl;
     padding-bottom: $spacer-xxl;
+    height: auto;
   }
   &__inner {
     position: relative;
     width: 100%;
-    max-width: rem-calc(1330px);
+    max-width: rem-calc(1330 + 80);
     @include center();
     @include clearfix();
   }
   &__images {
     position: relative;
     width: 100%;
-    max-width: rem-calc(1130px);
+    max-width: rem-calc(1130 + 40);
     overflow: hidden;
     @include respond-to(ipad-portrait) {
       float: right;
       width: percentage(1130 / 1330);
+      margin-right: 40px;
     }
   }
   &__image-list {
     display: block;
     position: relative;
+    width: 100%;
+    height: #{"calc( ~\"100vh - 110px\" )"};
     text-align: center;
     font-size: 0;
     transition: transform 600ms ease;
+    @include respond-to(ipad-portrait) {
+      height: rem-calc(620);
+    }
     &:before {
       content: '';
       position: absolute;
@@ -40,19 +49,27 @@
     }
   }
   &__image {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    height: rem-calc(700);
-    // height: #{"calc( ~\"100vh - 2.5rem\" )"};
-    // min-height: rem-calc(630px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    opacity: .5;
-    z-index: 6;
+    opacity: 0;
+    z-index: 5;
+    transition: opacity 600ms ease;
+    &--active {
+      opacity: .5;
+      z-index: 6;
+    }
     @include respond-to(ipad-portrait) {
-      // max-height: rem-calc(700px);
+      &--active {
+        opacity: 1;
+        z-index: 6;
+      }
     }
   }
   &__quotes {
@@ -64,46 +81,39 @@
     z-index: 6;
     overflow: hidden;
     @include respond-to(ipad-portrait) {
-      width: percentage(500 / 1330);
-      max-width: rem-calc(500px);
-      min-width: rem-calc(500px);
-      height: auto;
+      max-width: rem-calc(440px);
       top: 50%;
+      left: 40px;
       transform: translateY(-50%);
-      background-color: rgba(#333333, .97);
     }
-    &:before {
-      content: '';
-      height: 100%;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: -0.025rem;
-    }
-  }
-  &__quote-container {
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 99%;
-  }
-  &__quote-list {
-    display: block;
-    position: relative;
-    text-align: center;
-    font-size: 0;
-    transition: transform 600ms ease;
   }
   &__quote {
-    display: inline-block;
-    vertical-align: middle;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    opacity: 0;
+    display: block;
+    width: 100%;
+    max-width: rem-calc(500);
     padding: rem-calc(35px);
+    z-index: 5;
+    transition: opacity 600ms ease;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    &--active {
+      opacity: 1;
+      z-index: 6;
+    }
     @include respond-to(ipad-portrait) {
       padding: rem-calc(60px);
       text-align: left;
+      max-width: 100%;
+      top: 50%;
+      background-color: rgba(#333333, .97);
     }
   }
-  &__author {
-    margin-top: rem-calc($spacer-xs);
-  }
+  &__content p { color: $white; }
+  &__author { margin-top: rem-calc($spacer-xs); }
   .sqs-layout > .sqs-row {
     margin-left: 0;
     margin-right: 0;
@@ -116,7 +126,56 @@
     padding-right: 0;
   }
 }
+
 .controls {
+  &__item {
+    position: absolute;
+    top: 100%;
+    width: 50%;
+    height: 60px;
+    z-index: 7;
+    text-align: center;
+    @include respond-to(ipad-portrait) {
+      width: 30px;
+      height: 100%;
+      top: 0;
+    }
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+      margin-right: -0.025rem;
+    }
+    &--left {
+      left: 0;
+      text-align: right;
+      padding-right: 20px;
+      @include respond-to(ipad-portrait) {
+        text-align: center;
+        padding-right: 0;
+      }
+    }
+    &--right {
+      right: 0;
+      text-align: left;
+      padding-left: 20px;
+      @include respond-to(ipad-portrait) {
+        text-align: center;
+        padding-left: 0;
+      }
+    }
+  }
+  &__image {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    cursor: pointer;
+  }
+}
+
+.indicators {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 50%;

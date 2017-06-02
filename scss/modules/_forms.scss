@@ -1,8 +1,9 @@
 label.title, .required {
-  @include h5();
+  @include h6();
+  font-size: rem-calc(14);
   margin-bottom: rem-calc(5);
 }
-.required { color: $red; }
+span.required { color: $red; }
 .form-wrapper .field-list .field .field-element {
   margin-bottom: 0;
 }

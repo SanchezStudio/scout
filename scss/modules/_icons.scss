@@ -14,7 +14,7 @@
     display: block;
     vertical-align: top;
     width: 100%;
-    max-width: rem-calc(290px);
+    max-width: rem-calc(250px);
     margin-top: rem-calc($spacer-xl);
     @include center();
     &:first-of-type { margin-top: 0; }
@@ -22,11 +22,15 @@
       display: inline-block;
       // use this if you want to calc
       // sqs uses a less compiler
-      width: #{"calc( ~\"33.33% - 47px\" )"};
+      width: #{"calc( ~\"33.33% - 3.125rem\" )"};
+      margin-right: rem-calc(50);
       margin-top: 0;
       margin-left: 0;
-      margin-right: 47px;
       &:last-of-type { margin-right: 0; }
+    }
+    @include respond-to(ipad-landscape) {
+      width: #{"calc( ~\"33.33% - 6.25rem\" )"};
+      margin-right: rem-calc(150);
     }
   }
   h3 {
@@ -42,5 +46,10 @@
   a {
     color: $red;
     text-decoration: underline;
+  }
+  b, strong {
+    color: $red;
+    text-decoration: underline;
+    font-weight: normal;
   }
 }
