@@ -30,12 +30,12 @@ export default class GalleryList extends Component {
     }
     this.setState({ currentIndex: index });
   }
-  goToNext(e) {
-    if (e) { e.preventDefault(); }
+  goToNext(click) {
+    if (click) { clearInterval(this.timer); }
     this.goTo(this.state.currentIndex + 1);
   }
-  goToPrevious(e) {
-    if (e) { e.preventDefault(); }
+  goToPrevious(click) {
+    if (click) { clearInterval(this.timer) }
     this.goTo(this.state.currentIndex - 1);
   }
   render() {
@@ -45,7 +45,7 @@ export default class GalleryList extends Component {
           <div className="testimonial__images">
             <div className="testimonial__image-list" ref={(slider) => {this.slider = slider}}>
               {this.props.items.map((item, index) => {
-                let itemStyles = { backgroundImage: `url(${item.assetUrl})` }
+                let itemStyles = { backgroundImage: `url(${item.assetUrl}?format=original)` }
                 let active;
                 this.state.currentIndex === index ? active = true : active = false;
                 return (
@@ -76,10 +76,10 @@ export default class GalleryList extends Component {
           </div>
           */}
           <div className="controls">
-            <div className="controls__item controls__item--left" onClick={() => {this.goToPrevious()} }>
+            <div className="controls__item controls__item--left" onClick={() => {this.goToPrevious(true)} }>
               <img className="controls__image" src="/assets/icon-arrow-left.svg" alt=""/>
             </div>
-            <div className="controls__item controls__item--right" onClick={() => {this.goToNext()} }>
+            <div className="controls__item controls__item--right" onClick={() => {this.goToNext(true)} }>
               <img className="controls__image" src="/assets/icon-arrow-right.svg" alt=""/>
             </div>
           </div>

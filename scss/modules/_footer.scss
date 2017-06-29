@@ -1,35 +1,56 @@
+.push {
+  height: 165px;
+  @media screen and (min-width: 375px) {
+    height: 118px;
+  }
+  @media screen and (min-width: 860px) {
+    height: 80px;
+  }
+}
 .footer {
   position: relative;
-  padding: 30.5px 15px;
+  padding: 25.5px 15px;
   background-color: $black;
+  @include respond-to(mobile-plus) {
+    padding: 33.5px 15px;
+  }
   @include respond-to(ipad-landscape) {
     padding: ($spacer-sm - 8) $spacer-sm;
-    height: 80px;
     &__left { direction: rtl; }
   }
-  //&__block { padding: 20px; } // remove padding after content is added
+  @media (min-width: 860px) { padding: 30px 15px; }
   &__left, &__right {
-    display: inline-block;
-    vertical-align: middle;
-    text-align: left;
-    font-size: 0;
+    display: block;
+  }
+  &__left {
+    max-width: 212px;
+    @include respond-to(mobile-plus) { max-width: 380px; }
+    @media (min-width: 860px) {
+      display: inline-block;
+      max-width: initial;
+      direction: rtl;
+    }
   }
   &__right {
-    position: absolute;
-    right: 20px;
-    top: 48%;
-    transform: translateY(-50%);
-    z-index: 1;
-    @include respond-to(ipad-landscape) {
-      right: 40px;
-      top: 50%;
+    font-size: 0;
+    margin-top: rem-calc(20);
+    @media (min-width: 375px) {
+      position: absolute;
+      bottom: 27px;
+      right: 15px;
+      margin-top: 0;
+    }
+    @include respond-to(mobile-plus) { bottom: 39px; }
+    @include respond-to(ipad-landscape) { right: $spacer-sm; }
+    @media (min-width: 860px) {
+      bottom: 50%;
+      transform: translateY(50%);
     }
   }
   &__social, &__copyright {
-    display: block;
+    display: inline-block;
     direction: ltr;
-    @include respond-to(ipad-landscape) {
-      display: inline-block;
+    @media (min-width: 860px) {
       vertical-align: middle;
     }
     a {
@@ -43,13 +64,14 @@
   &__block {
     display: inline-block;
     margin-right: 34px;
+    &:last-of-type { margin-right: 0; }
     @include respond-to(ipad-landscape) {
       margin-right: rem-calc($spacer-sm - 5);
     }
   }
   &__copyright {
-    margin-top: rem-calc(10);
-    @include respond-to(ipad-landscape) {
+    margin-top: rem-calc(15);
+    @media (min-width: 860px) {
       margin-right: rem-calc($spacer-sm);
       margin-top: 0;
     }
@@ -61,17 +83,15 @@
     font-size: 11px;
     letter-spacing: .14rem;
     font-weight: 500;
+    display: inline;
     strong { font-weight: 900; }
   }
   &__logo {
     display: inline-block;
     vertical-align: middle;
-    height: 57px;
+    height: 30px;
     &:first-of-type { margin-right: 20px; }
-    @include respond-to(ipad-landscape) {
-      &:first-of-type { margin-right: 40px; }
-      height: 45px;
-    }
+    @media (min-width: 860px) { height: 35px; }
   }
   .sqs-layout > .sqs-row {
     margin: 0;
@@ -82,13 +102,9 @@
   }
   &__bar {
     display: none;
-    @include respond-to(ipad-landscape) {
-      display: inline;
-    }
+    @include respond-to(ipad-landscape) { display: inline; }
   }
   &__br {
-    @include respond-to(ipad-landscape) {
-      display: none;
-    }
+    @include respond-to(ipad-landscape) { display: none; }
   }
 }

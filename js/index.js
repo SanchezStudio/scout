@@ -4,3 +4,4 @@ AOS.init();
 import './nav';
 import './home';
 import './gallery';
+import './listings';

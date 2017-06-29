@@ -9,7 +9,7 @@
     vertical-align: middle;
     text-align: center;
     @media screen and (max-height: 665px) {
-      min-height: 665px;
+      min-height: 568px;
     }
     @include respond-to(ipad-portrait) {
       width: 50%;
@@ -19,24 +19,29 @@
       background: url("/assets/img-home-buy.jpg") no-repeat center center;
       background-size: cover;
       h2 { max-width: rem-calc(360px); }
+      @include respond-to(ipad-portrait) {
+        background: url("/assets/img-home-buy.jpg?format=original") no-repeat center center;
+      }
     }
     &--right {
       background: url("/assets/img-home-sell.jpg") no-repeat center center;
       background-size: cover;
       h2 { max-width: rem-calc(360px); }
+      @include respond-to(ipad-portrait) {
+        background: url("/assets/img-home-sell.jpg?format=original") no-repeat center center;
+      }
     }
     &:before {
       content: '';
       display: inline-block;
       vertical-align: middle;
       height: 100%;
-      max-height: rem-calc(800px);
       margin-right: -0.025rem;
     }
   }
   &__inner {
     width: 100%;
-    max-width: 98%;
+    max-width: #{"calc( ~\"100% - 60px\" )"};
     display: inline-block;
     vertical-align: middle;
   }
@@ -56,6 +61,6 @@
     margin-top: rem-calc(30px);
   }
   .button {
-    margin-top: $spacer-xl - 8;
+    margin-top: $spacer-xl - 8 !important;
   }
 }

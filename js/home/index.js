@@ -1,18 +1,39 @@
-import Player from '@vimeo/player';
-
 !(function() {
   let home = document.getElementById('home');
 
   if (home) {
-    // const player = new Player('vimeo', {
-    //   id: 216885922,
-    //   width: 640,
-    //   autoplay: true,
-    //   loop: true
-    // });
+    const video = document.querySelector("video");
+    let w = window,
+        d = document,
+        html = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        x = w.innerWidth || html.clientWidth || g.clientWidth,
+        y = w.innerHeight|| html.clientHeight|| g.clientHeight;
 
-    // player.on('play', function() {
-    //   console.log("Played video");
-    // })
+
+    // https://stackoverflow.com/questions/7192098/adding-sources-to-html5-video-in-javascript
+    let addSourceToVideo = function(element, src) {
+      let source = document.createElement('source');
+      source.src = src;
+      element.appendChild(source);
+    }
+
+    let update = function() {
+      if (html.classList.contains("no-touch") && x > 768 && video.children.length === 0) {
+        addSourceToVideo(video, "http://files.sanchezstudio.co/scout/video/HeaderVideoV1.mp4");
+        addSourceToVideo(video, "http://files.sanchezstudio.co/scout/video/HeaderVideoV1.webm");
+      }
+    }
+
+    console.dir(video.children);
+
+    let onResize = function() {
+      x = w.innerWidth || html.clientWidth || g.clientWidth
+      update();
+    }
+
+    update();
+
+    w.addEventListener("resize", onResize, false);
   }
 })();

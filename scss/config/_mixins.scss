@@ -69,7 +69,7 @@ $breakpoints: (
 }
 @mixin h1() {
   @include font-primary();
-  font-size: 40px;
+  font-size: 35px;
   line-height: 1.18;
   text-transform: uppercase;
   letter-spacing: 0.04rem;

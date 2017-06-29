@@ -6,9 +6,15 @@
   font-size: 0;
   padding-top: rem-calc($spacer-xl);
   padding-bottom: rem-calc($spacer-xl);
+  padding-left: 30px;
+  padding-right: 30px;
   @include respond-to(mobile-plus) {
     padding-top: rem-calc($spacer-xxl);
     padding-bottom: rem-calc($spacer-xxl);
+  }
+  @media screen and (min-width: 1050px) {
+    padding-left: 0;
+    padding-right: 0;
   }
   &__item {
     display: block;

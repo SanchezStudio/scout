@@ -35,9 +35,21 @@ body {
   -webkit-touch-callout: none;
   @include clearfix();
 }
+.content-container {
+  min-height: 100%;
+  margin-bottom: -165px;
+  @media (min-width: 375px) {
+    margin-bottom: -118px;
+  }
+  @media (min-width: 860px) {
+    margin-bottom: -80px;
+  }
+}
 html,
-body {
-  // height: 100%;
+body,
+.site-container {
+  height: 100%;
+  margin: 0;
 }
 a {
   color: inherit;

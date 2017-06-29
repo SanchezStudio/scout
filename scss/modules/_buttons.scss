@@ -34,8 +34,14 @@
     padding-left: rem-calc(35px);
     padding-right: rem-calc(35px);
     transition: color 400ms ease;
+    cursor: pointer;
     .button:hover & {
       color: rgba(255, 255, 255, .7);
+    }
+    &--desktop { display: none; }
+    @include respond-to(ipad-portrait) {
+      &--mobile { display: none; }
+      &--desktop { display: inline-block; }
     }
   }
 }
