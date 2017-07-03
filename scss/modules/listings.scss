@@ -44,12 +44,12 @@
   &__title,
   &__image
   &__text {
-    // padding: 20px;
+    padding: 0px;
     // remove after content is added
   }
   &__title {
     position: relative;
-    top: rem-calc(30px);
+    top: rem-calc(22px);
     z-index: 5;
     padding-left: 30px;
     padding-right: 30px;
@@ -93,7 +93,7 @@
     margin-top: rem-calc($spacer-xl);
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 138px;
+    padding-bottom: 100px;
     @include center();
     &__item {
       @include center();
@@ -101,6 +101,13 @@
       vertical-align: top;
       max-width: rem-calc(410px);
       width: 100%;
+      .listings__contact {
+        padding-bottom: 0;
+        ul {
+          text-align: left;
+          margin-top: rem-calc($spacer-md - 20);
+        }
+      }
       @include respond-to(ipad-portrait) {
         display: inline-block;
         margin-left: 0;
@@ -117,6 +124,7 @@
     }
     .button--left {
       margin-left: 0;
+      margin-top: rem-calc($spacer-md);
     }
     h4 {
       font-weight: 500;
@@ -128,7 +136,132 @@
     p {
       @include h2();
       color: $black;
-      margin-bottom: rem-calc($spacer-md - 12);
+      margin-bottom: 0;
+    }
+  }
+  &__body {
+    margin-top: rem-calc($spacer-md - 12);
+  }
+  &__content {
+    width: #{"calc( ~\"100% - 60px\" )"};
+    @include center();
+    @include respond-to(ipad-landscape) {
+      width: 100%;
+    }
+  }
+  &__pagination {
+    width: #{"calc( ~\"100% - 60px\" )"};
+    padding-top: 25px;
+    font-size: 0;
+    @include center();
+    @include respond-to(ipad-landscape) {
+      width: 100%;
+    }
+    &__arrow {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 10px;
+      height: 12px;
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      &--disabled path {
+        fill: $darkerwhite;
+      }
+      &--left { margin-right: 16px; }
+      &--right { margin-left: 16px; }
+    }
+    &__item {
+      display: inline-block;
+      vertical-align: middle;
+      width: 50%;
+      a {
+        @include h6();
+        letter-spacing: .28rem;
+        display: inline-block;
+        vertical-align: middle;
+        &.disabled { color: $darkerwhite; }
+      }
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+  &__footer {
+    padding-top: 84px;
+    padding-bottom: (106px - 32);
+    width: #{"calc( ~\"100% - 60px\" )"};
+    @include center();
+    @include respond-to(ipad-landscape) {
+      width: 100%;
+    }
+  }
+  &__contact {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 63px;
+    ul {
+      font-size: 0;
+      margin-top: 21px;
+      padding: 0;
+      text-align: center;
+    }
+    li {
+      position: relative;
+      list-style: none;
+      display: block;
+      vertical-align: middle;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      @include respond-to(mobile-plus) {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+      a {
+        @include font-tertiary();
+        font-size: 14px;
+        font-weight: 700;
+        font-style: italic;
+        color: $black;
+        vertical-align: middle;
+        display: block;
+      }
+      &:first-of-type {
+        @include respond-to(mobile-plus) {
+          padding-right: 28px;
+        }
+        &:after {
+          display: none;
+          @include font-tertiary();
+          content: '|';
+          position: absolute;
+          top: 50%;
+          left: 100%;
+          font-size: 14px;
+          font-weight: 900;
+          color: #aeaeae;
+          transform: translate(-50%, -50%);
+          @include respond-to(mobile-plus) {
+            display: block;
+          }
+        }
+      }
+      &:last-of-type {
+        @include respond-to(mobile-plus) {
+          padding-left: 28px;
+        }
+      }
+    }
+  }
+  &__share {
+    text-align: center;
+    h3 {
+      margin-bottom: 27px;
     }
   }
 }

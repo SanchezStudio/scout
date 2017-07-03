@@ -84,6 +84,7 @@
     background-size: cover;
     @include respond-to(ipad-portrait) {
       background: url("/assets/img-buy-fresh-listings.jpg?format=original") no-repeat center center;
+      background-size: cover;
     }
   }
   .form-wrapper .field-list .field {
