@@ -142,7 +142,7 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .07rem;
-    padding: 5vh;
+    padding: 4vh;
     &:after {
       content: '';
       display: none;
@@ -159,7 +159,7 @@
     @include respond-to(ipad-portrait) {
       font-size: 11px;
       letter-spacing: .14rem;
-      padding: rem-calc($spacer-xs) 0 rem-calc($spacer-xs) 0;
+      padding: 10px 0 10px 0;
       transition: color 400ms ease;
       &:hover { color: $red; }
       .nav__item:nth-of-type(2) & { padding-top: rem-calc($spacer-xl); }
@@ -173,8 +173,14 @@
       .nav-scrolled .nav__item--active & { color: $red; }
     }
     @media screen and (min-width: 769px) and (max-height: 1000px) {
-      padding-top: rem-calc(20);
-      padding-bottom: rem-calc(20);
+      padding-top: 15px;
+      padding-bottom: 15px;
+      .nav__item:nth-of-type(2) & { padding-top: rem-calc(40); }
+      .nav__item:last-of-type & { padding-bottom: rem-calc(40); }
+    }
+    @media screen and (min-width: 1200px) and (min-height: 1000px) {
+      padding-top: 25px;
+      padding-bottom: 25px;
       .nav__item:nth-of-type(2) & { padding-top: rem-calc(40); }
       .nav__item:last-of-type & { padding-bottom: rem-calc(40); }
     }

@@ -4,9 +4,9 @@ import AOS from 'aos';
   let listings = document.getElementById("listings-item");
 
   if (listings) {
-    let images = document.querySelectorAll(".thumb-image");
-    let text = document.querySelectorAll(".html-block");
-    let map = document.querySelectorAll(".map-block");
+    let images = document.querySelectorAll("img.thumb-image");
+    let text = document.querySelectorAll("div.html-block");
+    let map = document.querySelectorAll("div.map-block");
 
     function addAOS(element, animation, duration, offset) {
       element.dataset.aos = animation;
@@ -24,7 +24,16 @@ import AOS from 'aos';
     cycle(text);
     cycle(map);
 
-    AOS.refresh();
+    // AOS.refresh();
+
+    // function onClick (e) {
+    //   console.log(e.target);
+    // }
+
+    // window.addEventListener("click", function(e) {
+    //   e.preventDefault();
+    //   console.log(e);
+    // }, false);
   }
 
 })();

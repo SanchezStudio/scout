@@ -9,22 +9,27 @@
 /******************************************************************************
  * Document
 *******************************************************************************/
+html,
+body,
+.site-container {
+  height: 100%;
+  margin: 0;
+}
 html {
-  overflow-x: hidden;
-  overflow-y: scroll;
+  // overflow-x: hidden;
   font-size: 85%;
   @include respond-to(ipad-landscape) { font-size: 90%; }
   @include respond-to(mbp-fifteen) { font-size: 95%; }
   @include respond-to(mac) { font-size: 100%; }
   &.nav-active {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    max-height: 100%;
-    backface-visibility: hidden;
+    // position: fixed;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
+    // height: 100%;
+    // max-height: 100%;
+    // backface-visibility: hidden;
   }
 }
 body {
@@ -34,6 +39,10 @@ body {
   -webkit-tap-highlight-color: rgba( 0, 0, 0, 0 );
   -webkit-touch-callout: none;
   @include clearfix();
+  // .nav-active & {
+  //   position: static !important;
+  //   overflow-y: hidden;
+  // }
 }
 .content-container {
   min-height: 100%;
@@ -44,12 +53,6 @@ body {
   @media (min-width: 860px) {
     margin-bottom: -80px;
   }
-}
-html,
-body,
-.site-container {
-  height: 100%;
-  margin: 0;
 }
 a {
   color: inherit;

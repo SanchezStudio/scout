@@ -13,7 +13,9 @@ import Headroom from "headroom.js";
       html = d.documentElement,
       g = d.getElementsByTagName('body')[0],
       x = w.innerWidth || html.clientWidth || g.clientWidth,
-      y = w.innerHeight|| html.clientHeight|| g.clientHeight;
+      y = w.innerHeight|| html.clientHeight|| g.clientHeight,
+      scrollY = 0,
+      scrollX = 0;
 
   if (x <= 768) { headroom.init(); }
 
@@ -21,19 +23,30 @@ import Headroom from "headroom.js";
     html.classList.add("nav-scrolled");
   }
 
-  function onClick(event) {
-    event.preventDefault();
+  function disableScroll() {
+    window.scrollTo(scrollX, scrollY);
+  }
+
+  function onClick () {
+    scrollY = window.scrollY;
+    scrollX = window.scrollX;
 
     if (html.classList.contains("nav-active")) {
       // close navigation
       html.classList.remove("nav-active");
-      main.removeAttribute("style");
-      document.documentElement.scrollTop = document.body.scrollTop = main.dataset["y"];
+      headroom.init();
+      window.removeEventListener("scroll", disableScroll, false);
+      // window.removeEventListener("touchmove", disableScroll, false);
+      // main.removeAttribute("style");
+      // document.documentElement.scrollTop = document.body.scrollTop = main.dataset["y"];
     } else {
       // open navigation
       html.classList.add("nav-active");
-      main.style.transform = `translateY(-${latestKnownScroll}px)`;
-      main.dataset["y"] = latestKnownScroll;
+      headroom.destroy();
+      window.addEventListener("scroll", disableScroll, false);
+      // window.addEventListener("touchmove", disableScroll, false);
+      // main.style.transform = `translateY(-${latestKnownScroll}px)`;
+      // main.dataset["y"] = latestKnownScroll;
     }
 
   }
@@ -44,18 +57,20 @@ import Headroom from "headroom.js";
   }
 
   function onResize() {
+    x = w.innerWidth || html.clientWidth || g.clientWidth;
+    y = w.innerHeight|| html.clientHeight|| g.clientHeight;
     if (x >= 769) {
-      html.classList.remove("nav-active");
-      headroom.destroy();
+      if (html.classList.contains("nav-active")) { html.classList.remove("nav-active"); }
+      if (header.classList.contains("headroom")) { headroom.destroy(); }
+      window.removeEventListener("scroll", disableScroll, false);
     } else {
+      if (!html.classList.contains("nav-active") && !header.classList.contains("headroom"))
       headroom.init();
     }
   }
 
   function requestTick() {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-    }
+    if (!ticking) { window.requestAnimationFrame(update); }
     ticking = true;
   }
 
