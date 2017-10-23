@@ -6,8 +6,7 @@ import Headroom from "headroom.js";
   let ticking = false;
   let hero = document.querySelector(".hero--header");
   let header = document.querySelector("header");
-  let headroom = new Headroom(header);
-  let main = document.querySelector(".contain-it"),
+  let headroom = new Headroom(header),
       w = window,
       d = document,
       html = d.documentElement,

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import GalleryImage from "./GalleryImage";
 import GalleryQuote from "./GalleryQuote";
-import { prefix } from "../../util/helpers";
 
 export default class GalleryList extends Component {
   constructor() {
@@ -17,8 +16,6 @@ export default class GalleryList extends Component {
     clearInterval(this.timer);
   }
   goTo(index) {
-    var slider = this.slider;
-    var quotes = this.quotes;
     var items = this.props.items;
     var itemsLength = items.length;
     if (index < 0) {

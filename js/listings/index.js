@@ -5,8 +5,11 @@ import AOS from 'aos';
 
   if (listings) {
     let images = document.querySelectorAll("img.thumb-image");
+    let imagesArray = [...images];
     let text = document.querySelectorAll("div.html-block");
+    let textArray = [...text];
     let map = document.querySelectorAll("div.map-block");
+    let mapArray = [...map];
 
     function addAOS(element, animation, duration, offset) {
       element.dataset.aos = animation;
@@ -15,14 +18,14 @@ import AOS from 'aos';
     }
 
     function cycle(elements) {
-      elements.forEach((item) => {
-        addAOS(item, "fade-up", "800", "150");
-      });
+      for (var i = 0; i < elements.length; i++) {
+        addAOS(elements[i], "fade-up", "800", "150");
+      }
     };
 
-    cycle(images);
-    cycle(text);
-    cycle(map);
+    cycle(imagesArray);
+    cycle(textArray);
+    cycle(mapArray);
 
     // AOS.refresh();
 

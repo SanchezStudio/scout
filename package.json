@@ -16,7 +16,7 @@
     "js:dev": "webpack -d",
     "js:prod": "webpack -p",
     "sassy": "node-sass --include-path scss $npm_package_config_scss_file $npm_package_config_css_file",
-    "postcss": "postcss --use autoprefixer --autoprefixer.browsers 'last 2 versions' --output $npm_package_config_css_file $npm_package_config_css_file",
+    "postcss": "postcss --use autoprefixer --autoprefixer.browsers 'last 5 versions' --output $npm_package_config_css_file $npm_package_config_css_file",
     "css:dev": "npm-run-all sassy",
     "css:prod": "npm-run-all sassy postcss",
     "sqs:server": "squarespace-server $npm_package_config_sqs_url --directory=./template --auth",
@@ -38,7 +38,7 @@
     "npm-run-all": "^2.3.0",
     "onchange": "^3.2.1",
     "postcss-cli": "^2.6.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.15.0"
   },
   "dependencies": {
     "aos": "^2.1.1",

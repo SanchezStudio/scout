@@ -7,8 +7,7 @@
         d = document,
         html = d.documentElement,
         g = d.getElementsByTagName('body')[0],
-        x = w.innerWidth || html.clientWidth || g.clientWidth,
-        y = w.innerHeight|| html.clientHeight|| g.clientHeight;
+        x = w.innerWidth || html.clientWidth || g.clientWidth;
 
 
     // https://stackoverflow.com/questions/7192098/adding-sources-to-html5-video-in-javascript
