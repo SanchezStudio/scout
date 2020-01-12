@@ -1,4 +1,4 @@
-require('smoothscroll-polyfill').polyfill();
+//require('smoothscroll-polyfill').polyfill();
 import AOS from 'aos';
 import './nav';
 import './home';
