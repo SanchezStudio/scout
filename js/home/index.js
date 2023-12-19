@@ -1,4 +1,5 @@
 !(function() {
+  //document.cookie = 'cross-site-cookie=https://files.sanchezstudio.co; SameSite=None; Secure';
   let home = document.getElementById('home');
 
   if (home) {
@@ -18,13 +19,15 @@
     }
 
     let update = function() {
-      if (html.classList.contains("no-touch") && x > 768 && video.children.length === 0) {
-        addSourceToVideo(video, "http://files.sanchezstudio.co/scout/video/HeaderVideoV1.mp4");
-        addSourceToVideo(video, "http://files.sanchezstudio.co/scout/video/HeaderVideoV1.webm");
+      console.log("update");
+      if (html.classList.contains("no-touch") && x > 768 && video.children.length === 1) {
+        addSourceToVideo(video, "https://files.calebmichaelsanchez.com/HeaderVideoV1.mp4");
+        addSourceToVideo(video, "https://files.calebmichaelsanchez.com/HeaderVideoV1.webm");
+        console.log("its running");
       }
     }
 
-    console.dir(video.children);
+    console.log("inside home");
 
     let onResize = function() {
       x = w.innerWidth || html.clientWidth || g.clientWidth

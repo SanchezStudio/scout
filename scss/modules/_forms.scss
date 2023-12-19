@@ -17,6 +17,7 @@ span.required { color: $red; }
   }
 }
 
+// removed button from this style
 body:not(.button-style-default).button-corner-style-square .sqs-editable-button,
 body:not(.button-style-default).button-corner-style-square .sqs-editable-button-shape,
 body:not(.button-style-default).button-style-solid .sqs-editable-button,
@@ -28,7 +29,6 @@ body:not(.button-style-default) .sqs-editable-button-color,
 body:not(.button-style-default) .sqs-editable-button,
 body:not(.button-style-default) .sqs-editable-button-layout,
 .form-wrapper input[type=submit],
-button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
