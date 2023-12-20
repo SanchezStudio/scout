@@ -8,44 +8,44 @@
     "url": "ssh://git@github.com:calebmichaelsanchez/squarespace-starter.git"
   },
   "config": {
-    "css_file": "./template/styles/screen.css",
-    "scss_file": "./scss/screen.scss",
-    "sqs_url": "https://caleb-sanchez-a2rc.squarespace.com"
+    "css": "./template/styles/screen.css",
+    "scss": "./scss/screen.scss",
+    "url": "https://caleb-sanchez-a2rc.squarespace.com"
   },
   "scripts": {
-    "js:dev": "webpack -d",
-    "js:prod": "webpack -p",
-    "sassy": "node-sass --include-path scss $npm_package_config_scss_file $npm_package_config_css_file",
-    "postcss": "postcss --use autoprefixer --autoprefixer.browsers 'last 5 versions' --output $npm_package_config_css_file $npm_package_config_css_file",
-    "css:dev": "npm-run-all sassy",
-    "css:prod": "npm-run-all sassy postcss",
-    "sqs:server": "squarespace-server $npm_package_config_sqs_url --directory=./template --auth",
-    "watch": "npm-run-all --parallel watch:scss watch:js sqs:server",
-    "watch:js": "onchange \"./js\" -- npm run js:dev",
-    "watch:scss": "onchange \"./scss\" -- npm run css:dev",
-    "start": "npm run watch",
-    "build": "npm-run-all js:prod css:prod",
-    "assemble": "squarespace assemble --directory=./template"
+    "build": "squarespace assemble -l & npm run js:prod & npm run css:prod",
+    "watch": "(npm run css:dev & npm run js:dev) && squarespace assemble -wT -l -d \"./template\" -o \"./build\"",
+    "server": "squarespace runserver -T --directory=\"./template\" --auth",
+    "start": "squarespace setup && (npm run watch & npm run server)",
+    "deploy": "squarespace setup && squarespace deploy",
+    "js:dev": "webpack --config webpack.development.js --mode=development --watch",
+    "js:prod": "webpack --config webpack.production.js --mode=production",
+    "postcss": "postcss --use autoprefixer -o $npm_package_config_css $npm_package_config_css",
+    "css:dev": "sass -wc --verbose $npm_package_config_scss:$npm_package_config_css",
+    "css:prod": "npm run sassy & postcss"
   },
   "devDependencies": {
-    "@squarespace/toolbelt": "^0.8.8",
-    "autoprefixer": "^6.7.1",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "node-sass": "^4.13.0",
-    "npm-run-all": "^2.3.0",
-    "onchange": "^3.3.0",
-    "postcss-cli": "^2.6.0",
-    "webpack": "^1.15.0"
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
+    "@squarespace/toolbelt": "^0.12.5",
+    "autoprefixer": "^10.4.16",
+    "babel-loader": "^9.1.3",
+    "concurrently": "^8.2.2",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^10.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0"
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "axios": "^0.13.1",
-    "headroom.js": "^0.9.4",
-    "immutability-helper": "^2.9.1",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "axios": "^1.6.2",
+    "headroom.js": "^0.12.0",
+    "immutability-helper": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

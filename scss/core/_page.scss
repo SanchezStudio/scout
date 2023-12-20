@@ -1,7 +1,7 @@
 main, .footer, .push {
   overflow: hidden;
   @include respond-to(ipad-portrait) {
-    width: #{"calc( ~\"100% - 90px\" )"};
+    width: #{"calc( ~\"100% - 120px\" )"};
     float: right;
     &:after {
       content: '';

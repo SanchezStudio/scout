@@ -9,7 +9,7 @@
   @include respond-to(ipad-portrait) {
     display: inline-block;
     vertical-align: top;
-    width: 90px;
+    width: 120px;
     height: 100vh;
     padding-top: $spacer-sm;
     padding-bottom: 10px;
@@ -189,7 +189,7 @@
     display: none;
     position: absolute;
     bottom: rem-calc(16);
-    width: rem-calc(68);
+    width: rem-calc(101);
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
@@ -203,7 +203,7 @@
       position: relative;
       width: 100%;
       height: 0;
-      padding-bottom: percentage(96 / 68);
+      padding-bottom: percentage(96 / 101);
       svg {
         position: absolute;
         top: 0;

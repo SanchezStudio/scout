@@ -2,6 +2,7 @@ var path      = require("path");
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH  = path.resolve(ROOT_PATH, "js");
 var webpack = require("webpack");
+var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   resolve: {
