@@ -13,16 +13,16 @@
     "url": "https://caleb-sanchez-a2rc.squarespace.com"
   },
   "scripts": {
-    "build": "squarespace assemble -l & npm run js:prod & npm run css:prod",
-    "watch": "(npm run css:dev & npm run js:dev) && squarespace assemble -wT -l -d \"./template\" -o \"./build\"",
+    "build": "npm run js:prod && npm run css:prod && squarespace assemble -l",
+    "watch": "(npm run css:dev & npm run js:dev) && squarespace assemble -wT -l -d \"./template\"",
     "server": "squarespace runserver -T --directory=\"./template\" --auth",
     "start": "squarespace setup && (npm run watch & npm run server)",
     "deploy": "squarespace setup && squarespace deploy",
     "js:dev": "webpack --config webpack.development.js --mode=development --watch",
     "js:prod": "webpack --config webpack.production.js --mode=production",
-    "postcss": "postcss --use autoprefixer -o $npm_package_config_css $npm_package_config_css",
+    "postcss": "postcss --verbose --use autoprefixer -o $npm_package_config_css $npm_package_config_css",
     "css:dev": "sass -wc --verbose $npm_package_config_scss:$npm_package_config_css",
-    "css:prod": "npm run sassy & postcss"
+    "css:prod": "npm run postcss"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
